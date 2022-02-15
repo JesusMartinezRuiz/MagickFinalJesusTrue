@@ -19,8 +19,6 @@ class AdaptadorCartaAdmin(val elementos: List<Cartas>, val contexto: EiActivity)
 
 
 
-
-
     class ViewHolder(val bind:RowCartaAdminBinding)
         : RecyclerView.ViewHolder(bind.root)
 
