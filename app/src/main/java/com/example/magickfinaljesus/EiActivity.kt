@@ -45,6 +45,8 @@ class EiActivity : AppCompatActivity() {
         AdaptadorEventosAdmin(listaEventoAdmin,this)
     }
 
+    //el adaptador de pedidos aqui igual que este
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
