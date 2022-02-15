@@ -96,8 +96,6 @@ class Registro : AppCompatActivity() {
                                 nombre.text.toString().trim(),
                                 pass.text.toString().trim(),
                                 "1",
-                                today.toString(),
-                                false,
                                 correo.text.toString().trim(),
                                 url_firebase.toString(),
                                 Estado.CREADO,
@@ -132,8 +130,6 @@ class Registro : AppCompatActivity() {
                             nombre.text.toString().trim(),
                             pass.text.toString().trim(),
                             "1",
-                            today.toString(),
-                            false,
                             correo.text.toString().trim(),
                             "",
                             Estado.CREADO,
@@ -248,16 +244,6 @@ class Registro : AppCompatActivity() {
         return ficheroImagen!!
     }
 
-
-
-    suspend fun insertarimg(id:String,imagen:Uri):String{
-        return ""
-    }
-
-
-    private suspend fun insertarClub(id:String,nombre:String,ciudad:String,fundacion:Int,url_firebase:String){
-
-    }
 
     suspend fun tostadaCorrutina(texto:String){
         runOnUiThread({

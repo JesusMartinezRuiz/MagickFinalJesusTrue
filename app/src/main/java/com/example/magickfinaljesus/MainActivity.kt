@@ -84,10 +84,6 @@ class MainActivity : AppCompatActivity() {
                                         pojo_usuario.tipo
                                     )
 
-                                    putString(
-                                        getString(R.string.privado),
-                                        pojo_usuario.privado.toString()
-                                    )
 
                                     commit()
                                 }

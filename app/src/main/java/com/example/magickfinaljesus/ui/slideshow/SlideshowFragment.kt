@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.magickfinaljesus.EiActivity
 import com.example.magickfinaljesus.R
 import com.example.magickfinaljesus.databinding.FragmentSlideshowBinding
@@ -36,9 +37,9 @@ class SlideshowFragment : Fragment() {
         _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
+
         slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+
         })
         return root
     }
@@ -46,6 +47,13 @@ class SlideshowFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         ma.FAB_manager(0)
+
+        binding.rvPedidos.apply {
+            adapter= ma.adaptadorEventoAdmin
+            layoutManager= LinearLayoutManager(ma)
+            setHasFixedSize(true)
+        }
+
     }
 
     override fun onDestroyView() {
