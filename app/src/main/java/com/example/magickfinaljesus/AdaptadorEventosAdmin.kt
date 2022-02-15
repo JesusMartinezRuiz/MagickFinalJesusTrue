@@ -41,12 +41,6 @@ class AdaptadorEventosAdmin(val elementos: List<Eventos>, val contexto: EiActivi
             rowAforoOcAdmin.text= elem.aforo_ocupado.toString()
             rowFechaAdmin.text=elem.fecha
 
-            editarEventos.setOnClickListener {
-                val activity= Intent(contexto,EditarEvento::class.java)
-                activity.putExtra("evento",elem as Serializable)
-
-                contexto.startActivity(activity)
-            }
 
             }
 

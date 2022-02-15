@@ -41,12 +41,7 @@ class AdaptadorCartaAdmin(val elementos: List<Cartas>, val contexto: EiActivity)
             tvPrecioAdmin.text = elem.precio.toString()
             swiDisponible.isChecked = elem.disponible!!
 
-            editarCarta.setOnClickListener {
-                val activity= Intent(contexto,EditarCarta::class.java)
-                activity.putExtra("carta",elem as Serializable)
 
-                contexto.startActivity(activity)
-            }
 
 
             swiDisponible.setOnClickListener {
