@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NormalUser.CartasUser.VerCartasFragment">
+
+    <SearchView
+        android:id="@+id/cartas_searcher"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_comprar_cartas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_blanco_cartas" />
+
+    <CheckBox
+        android:id="@+id/check_blanco_cartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blanco"
+        app:layout_constraintEnd_toStartOf="@+id/check_negro_cartas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swi_cartas" />
+
+    <CheckBox
+        android:id="@+id/check_negro_cartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Negro"
+        app:layout_constraintBottom_toBottomOf="@+id/check_blanco_cartas"
+        app:layout_constraintEnd_toStartOf="@+id/check_azul_cartas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/check_blanco_cartas"
+        app:layout_constraintTop_toTopOf="@+id/check_blanco_cartas" />
+
+    <CheckBox
+        android:id="@+id/check_azul_cartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Azul"
+        app:layout_constraintBottom_toBottomOf="@+id/check_negro_cartas"
+        app:layout_constraintEnd_toStartOf="@+id/check_Rojo_cartas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/check_negro_cartas"
+        app:layout_constraintTop_toTopOf="@+id/check_negro_cartas" />
+
+    <CheckBox
+        android:id="@+id/check_Rojo_cartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rojo"
+        app:layout_constraintBottom_toBottomOf="@+id/check_azul_cartas"
+        app:layout_constraintEnd_toStartOf="@+id/check_verde_cartas"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/check_azul_cartas"
+        app:layout_constraintTop_toTopOf="@+id/check_azul_cartas" />
+
+    <CheckBox
+        android:id="@+id/check_verde_cartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verde"
+        app:layout_constraintBottom_toBottomOf="@+id/check_Rojo_cartas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/check_Rojo_cartas"
+        app:layout_constraintTop_toTopOf="@+id/check_Rojo_cartas" />
+
+    <Switch
+        android:id="@+id/swi_cartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activar el filtrado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartas_searcher" />
+</androidx.constraintlayout.widget.ConstraintLayout>

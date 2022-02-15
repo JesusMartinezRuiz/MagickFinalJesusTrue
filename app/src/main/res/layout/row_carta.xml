@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/row_carta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_row_carta"
+        android:layout_width="126dp"
+        android:layout_height="176dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/logonotif" />
+
+    <TextView
+        android:id="@+id/nombre_row_carta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Nombre"
+        app:layout_constraintStart_toEndOf="@+id/iv_row_carta"
+        app:layout_constraintTop_toTopOf="@+id/iv_row_carta" />
+
+    <TextView
+        android:id="@+id/precio_row_carta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_row_carta"
+        app:layout_constraintStart_toStartOf="@+id/nombre_row_carta" />
+
+    <Button
+        android:id="@+id/comprar_row_carta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pedir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="€"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/precio_row_carta" />
+</androidx.constraintlayout.widget.ConstraintLayout>

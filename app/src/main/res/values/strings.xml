@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MagickFinalJesus</string>
+    <string name="id">idUser</string>
+    <string name="username">name_user</string>
+    <string name="type">tipo_user</string>
+    <string name="privado">false</string>
+    <string name="nombre_canal">Notificacion basica</string>
+    <string name="id_canal">canal_basico</string>
+    <string name="description_canal">Canal de prueba</string>
+    <string name="title_activity_user_main">MainActivity</string>
+    <string name="title_home">Cartas</string>
+    <string name="title_dashboard">Eventos</string>
+    <string name="title_notifications">Mis Cosas</string>
+    <string name="title_activity_admin_main">AdminMain</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Administrador</string>
+    <string name="nav_header_subtitle">Bienvenido, estamos en la versión 1.1</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Cartas</string>
+    <string name="menu_gallery">Eventos</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_admin_main_navigation">AdminMainNavigation</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+    <string name="title_activity_administrador_main">AdministradorMain</string>
+    <string name="title_activity_admin_navigation_main">AdminNavigationMain</string>
+    <string name="title_activity_ei">EiActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/row_ivEvento"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/row_nombreEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NombreEvento"
+        app:layout_constraintBottom_toTopOf="@+id/row_aforoMaxEvento"
+        app:layout_constraintStart_toEndOf="@+id/row_ivEvento"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/row_aforo_ocupadoEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aforo_ocupado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/row_fecha_evento"
+        app:layout_constraintStart_toEndOf="@+id/row_ivEvento"
+        app:layout_constraintTop_toBottomOf="@+id/row_aforoMaxEvento" />
+
+    <TextView
+        android:id="@+id/row_aforoMaxEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aforo_max"
+        app:layout_constraintBottom_toTopOf="@+id/row_aforo_ocupadoEvento"
+        app:layout_constraintStart_toStartOf="@+id/row_aforo_ocupadoEvento"
+        app:layout_constraintTop_toBottomOf="@+id/row_nombreEvento" />
+
+    <TextView
+        android:id="@+id/row_fecha_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/row_apuntarseEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Af_max:"
+        app:layout_constraintBottom_toBottomOf="@+id/row_aforoMaxEvento"
+        app:layout_constraintEnd_toStartOf="@+id/row_aforoMaxEvento"
+        app:layout_constraintTop_toTopOf="@+id/row_aforoMaxEvento" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Af_oc:"
+        app:layout_constraintBottom_toBottomOf="@+id/row_aforo_ocupadoEvento"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/row_aforo_ocupadoEvento" />
+</androidx.constraintlayout.widget.ConstraintLayout>
