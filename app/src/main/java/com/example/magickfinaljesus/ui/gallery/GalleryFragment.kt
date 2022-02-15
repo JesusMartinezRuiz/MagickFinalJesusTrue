@@ -58,6 +58,7 @@ class GalleryFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        ma.FAB_manager(2)
 
         binding.rvEventosAdmin.apply {
             adapter= ma.adaptadorEventoAdmin

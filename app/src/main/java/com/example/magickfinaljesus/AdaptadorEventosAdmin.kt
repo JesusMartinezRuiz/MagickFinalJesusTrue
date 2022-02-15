@@ -36,6 +36,7 @@ class AdaptadorEventosAdmin(val elementos: List<Eventos>, val contexto: EiActivi
 
         with(holder.bind){
             rowNombreEventoAdmin.text = elem.nombre
+            rowPrecioEventoAdmin.text= elem.precio.toString()
             Glide.with(contexto).load(elem.img).into(ivRowAdminEventos)
             rowAforoMaxAdmin.text = elem.aforo_max.toString()
             rowAforoOcAdmin.text= elem.aforo_ocupado.toString()

@@ -53,7 +53,6 @@
         android:id="@+id/row_apuntarseEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
@@ -75,4 +74,31 @@
         app:layout_constraintBottom_toBottomOf="@+id/row_aforo_ocupadoEvento"
         app:layout_constraintStart_toStartOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="@+id/row_aforo_ocupadoEvento" />
+
+    <TextView
+        android:id="@+id/row_precioEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/row_nombreEvento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/row_nombreEvento"
+        app:layout_constraintTop_toTopOf="@+id/row_nombreEvento" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio:"
+        app:layout_constraintBottom_toBottomOf="@+id/row_precioEvento"
+        app:layout_constraintEnd_toStartOf="@+id/row_precioEvento"
+        app:layout_constraintTop_toTopOf="@+id/row_precioEvento" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empieza:"
+        app:layout_constraintEnd_toStartOf="@+id/row_fecha_evento"
+        app:layout_constraintTop_toTopOf="@+id/row_fecha_evento" />
 </androidx.constraintlayout.widget.ConstraintLayout>

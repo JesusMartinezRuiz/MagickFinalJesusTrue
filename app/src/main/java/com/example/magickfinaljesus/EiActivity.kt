@@ -3,6 +3,7 @@ package com.example.magickfinaljesus
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -60,10 +61,7 @@ class EiActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarEi.toolbar)
 
-        binding.appBarEi.fab.setOnClickListener { view ->
-            val actividad = Intent(applicationContext, CrearCarta::class.java)
-            startActivity (actividad)
-        }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_ei)
@@ -135,5 +133,29 @@ class EiActivity : AppCompatActivity() {
         super.onBackPressed()
         val actividad = Intent(applicationContext,MainActivity::class.java)
         startActivity (actividad)
+    }
+
+    fun FAB_manager(mode:Int){
+        when(mode){
+            0 -> {
+                binding.appBarEi.fab.visibility = View.INVISIBLE
+            }
+            1 -> {
+                binding.appBarEi.fab.visibility = View.VISIBLE
+                binding.appBarEi.fab.setImageResource(R.drawable.ic_baseline_add24)
+                binding.appBarEi.fab.setOnClickListener { view ->
+                    val actividad = Intent(applicationContext, CrearCarta::class.java)
+                    startActivity (actividad)
+                }
+            }
+            2 -> {
+                binding.appBarEi.fab.visibility = View.VISIBLE
+                binding.appBarEi.fab.setImageResource(R.drawable.ic_baseline_add24)
+                binding.appBarEi.fab.setOnClickListener { view ->
+                    val actividad = Intent(applicationContext,CrearEvento::class.java)
+                    startActivity (actividad)
+                }
+            }
+        }
     }
 }

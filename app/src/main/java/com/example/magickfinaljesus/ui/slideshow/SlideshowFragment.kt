@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.magickfinaljesus.EiActivity
 import com.example.magickfinaljesus.R
 import com.example.magickfinaljesus.databinding.FragmentSlideshowBinding
 
@@ -19,6 +20,10 @@ class SlideshowFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    val ma by lazy{
+        activity as EiActivity
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +41,11 @@ class SlideshowFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        ma.FAB_manager(0)
     }
 
     override fun onDestroyView() {

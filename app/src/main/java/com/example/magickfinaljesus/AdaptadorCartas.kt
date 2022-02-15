@@ -15,7 +15,7 @@ import java.util.*
 
 private lateinit var db_ref: DatabaseReference
 
-class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:List<Boolean>) :
+class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:List<Boolean>,val idUsuario:String) :
     RecyclerView.Adapter<AdaptadorCartas.ViewHolder>(), Filterable {
 
 
@@ -44,16 +44,13 @@ class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:
             Glide.with(con).load(elem.img).into(ivRowCarta)
             precioRowCarta.text = elem.precio.toString()
 
-//            comprarRowCarta.setOnClickListener {
-//                val id_reservaCartas=db_ref.child("tienda").child("reservas_carta").push().key!!
-//                val nueva_reserva=ReservaEventos(id_reservaEvento,idUsuario,elem.id)
-//                db_ref.child("tienda").child("reservas_eventos").child(id_reservaEvento).setValue(nueva_reserva)
-//                db_ref.child("tienda").child("eventos").child(elem.id.toString()).child("aforo_ocupado").setValue(elem.aforo_ocupado!!.toInt()+1)
-//                rowAforoOcupadoEvento.text= (elem.aforo_ocupado.toInt()+1).toString()
-//                //desabilitar el imageview solo de este elemento
-//                rowApuntarseEvento.visibility= View.INVISIBLE
-//
-//            }
+            comprarRowCarta.setOnClickListener {
+                val id_reservaCartas=db_ref.child("tienda").child("reservas_carta").push().key!!
+                val nueva_reserva=ReservaEventos(id_reservaCartas,idUsuario,elem.id)
+                db_ref.child("tienda").child("reservas_carta").child(id_reservaCartas).setValue(nueva_reserva)
+                comprarRowCarta.visibility=View.INVISIBLE
+
+            }
 
         }
     }

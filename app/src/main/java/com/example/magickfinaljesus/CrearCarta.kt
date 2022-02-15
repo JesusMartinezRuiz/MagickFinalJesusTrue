@@ -36,7 +36,7 @@ class CrearCarta : AppCompatActivity() {
     lateinit var rojo:RadioButton
     lateinit var verde:RadioButton
     lateinit var disponible:Switch
-    var url_usuario: Uri?=null
+    var url_carta: Uri?=null
 
     lateinit var db_ref: DatabaseReference
     lateinit var sto_ref: StorageReference
@@ -84,25 +84,16 @@ class CrearCarta : AppCompatActivity() {
                     .child("cartas").push().key
 
 
-                val fecha= Calendar.getInstance()
-                val today=("${fecha.get(Calendar.YEAR)}-${fecha.get(Calendar.MONTH)+1}-${fecha.get(
-                    Calendar.DAY_OF_MONTH)}").toString()
-
-
 
                 GlobalScope.launch(Dispatchers.IO) {
 
 
-                    if (url_usuario != null) {
-
-
-
-                        val androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+                    if (url_carta != null) {
 
                         val url_firebase = sto_ref.child("tienda")
                             .child("cartas")
                             .child(identificador!!)
-                            .putFile(url_usuario!!)
+                            .putFile(url_carta!!)
                             .await().storage.downloadUrl.await()
 
 
@@ -168,7 +159,7 @@ class CrearCarta : AppCompatActivity() {
 
         val getCamera=registerForActivityResult(ActivityResultContracts.TakePicture()){
             if(it){
-                img.setImageURI(url_usuario)
+                img.setImageURI(url_carta)
 
             }else{
                 Toast.makeText(applicationContext, "No se ha hechado una foto", Toast.LENGTH_SHORT).show()
@@ -187,8 +178,8 @@ class CrearCarta : AppCompatActivity() {
 
         img.setOnLongClickListener{
             val ficheroFoto=crearFicheroImagen()
-            url_usuario= FileProvider.getUriForFile(applicationContext,"com.example.magickfinaljesus.fileprovider",ficheroFoto)
-            getCamera.launch(url_usuario)
+            url_carta= FileProvider.getUriForFile(applicationContext,"com.example.magickfinaljesus.fileprovider",ficheroFoto)
+            getCamera.launch(url_carta)
             return@setOnLongClickListener true
         }
 
@@ -205,7 +196,7 @@ class CrearCarta : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
         }else{
 
-            url_usuario=uri
+            url_carta=uri
 
             img.setImageURI(uri)
 

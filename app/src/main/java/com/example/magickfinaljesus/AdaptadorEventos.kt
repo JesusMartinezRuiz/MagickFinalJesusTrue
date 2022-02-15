@@ -34,6 +34,7 @@ class AdaptadorEventos(val elementos: List<Eventos>, val con: UserMain, val idUs
 
         with(holder.bind){
             rowNombreEvento.text=elem.nombre
+            rowPrecioEvento.text=elem.precio.toString()
             rowAforoMaxEvento.text= elem.aforo_max.toString()
             rowAforoOcupadoEvento.text= elem.aforo_ocupado.toString()
             rowFechaEvento.text= elem.fecha

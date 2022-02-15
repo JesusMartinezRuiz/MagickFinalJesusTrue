@@ -64,17 +64,16 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        
+
+        ma.FAB_manager(1)
 
         with(binding){
-
-
             rvCartasAdmin.adapter= adaptadorCartaAdmin
             rvCartasAdmin.layoutManager= LinearLayoutManager(ma)
 
-
         }
     }
+
 
 
 
