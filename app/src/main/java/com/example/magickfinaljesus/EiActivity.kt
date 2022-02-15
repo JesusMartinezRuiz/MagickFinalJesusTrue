@@ -22,6 +22,7 @@ class EiActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityEiBinding
     lateinit var listaAdmin:ArrayList<Cartas>
+    lateinit var listaAdminEventos:ArrayList<Eventos>
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
 
@@ -34,12 +35,23 @@ class EiActivity : AppCompatActivity() {
     }
 
 
+    val listaEventoAdmin by lazy{
+        listaAdminEventos
+    }
+
+
+    val adaptadorEventoAdmin by lazy{
+        AdaptadorEventosAdmin(listaEventoAdmin,this)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         db_ref= FirebaseDatabase.getInstance().getReference()
         sto_ref= FirebaseStorage.getInstance().getReference()
         listaAdmin=ArrayList<Cartas>()
+        listaAdminEventos=ArrayList()
 
 
 
@@ -77,6 +89,25 @@ class EiActivity : AppCompatActivity() {
                     snapshot.children.forEach { hijo->
                         val pojo_carta=hijo?.getValue(Cartas::class.java)
                             listaAdmin.add(pojo_carta!!)
+
+                    }
+
+                }
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
+
+        db_ref.child("tienda")
+            .child("eventos")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    listaAdminEventos.clear()
+                    snapshot.children.forEach { hijo->
+                        val pojo_evento=hijo?.getValue(Eventos::class.java)
+                            listaAdminEventos.add(pojo_evento!!)
+
 
                     }
 

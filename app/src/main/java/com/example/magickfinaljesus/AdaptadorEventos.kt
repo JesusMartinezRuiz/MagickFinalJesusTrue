@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 
 import com.example.magickfinaljesus.databinding.RowEventosBinding
 import com.google.firebase.database.*
+import java.util.concurrent.CountDownLatch
 
 private lateinit var db_ref: DatabaseReference
 
@@ -38,8 +39,8 @@ class AdaptadorEventos(val elementos: List<Eventos>, val con: UserMain, val idUs
             rowFechaEvento.text= elem.fecha
             Glide.with(con).load(elem.img).into(rowIvEvento)
 
-            rowApuntarseEvento.setOnClickListener {
 
+            rowApuntarseEvento.setOnClickListener {
                 val id_reservaEvento=db_ref.child("tienda").child("reservas_eventos").push().key!!
                 val nueva_reserva=ReservaEventos(id_reservaEvento,idUsuario,elem.id)
                 db_ref.child("tienda").child("reservas_eventos").child(id_reservaEvento).setValue(nueva_reserva)
@@ -47,14 +48,14 @@ class AdaptadorEventos(val elementos: List<Eventos>, val con: UserMain, val idUs
                 rowAforoOcupadoEvento.text= (elem.aforo_ocupado.toInt()+1).toString()
                 //desabilitar el imageview solo de este elemento
                 rowApuntarseEvento.visibility= View.INVISIBLE
+
             }
 
         }
+
     }
 
     override fun getItemCount(): Int {
         return elementos.size
     }
-
-
 }

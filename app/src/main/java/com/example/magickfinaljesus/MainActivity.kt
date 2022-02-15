@@ -102,10 +102,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
-
                             }else if(name.text.toString().equals("") || pass.text.toString().equals("")){
                                 Toast.makeText(applicationContext, "Por favor Rellene todos los datos", Toast.LENGTH_SHORT).show()
 
