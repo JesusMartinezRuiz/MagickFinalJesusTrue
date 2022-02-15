@@ -1,6 +1,7 @@
 package com.example.magickfinaljesus
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.magickfinaljesus.databinding.RowCartaAdminBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.io.Serializable
 import java.util.*
 
 private lateinit var db_ref: DatabaseReference
@@ -38,6 +40,13 @@ class AdaptadorCartaAdmin(val elementos: List<Cartas>, val contexto: EiActivity)
             Glide.with(contexto).load(elem.img).into(ivCartaAdmin)
             tvPrecioAdmin.text = elem.precio.toString()
             swiDisponible.isChecked = elem.disponible!!
+
+            editarCarta.setOnClickListener {
+                val activity= Intent(contexto,EditarCarta::class.java)
+                activity.putExtra("carta",elem as Serializable)
+
+                contexto.startActivity(activity)
+            }
 
 
             swiDisponible.setOnClickListener {

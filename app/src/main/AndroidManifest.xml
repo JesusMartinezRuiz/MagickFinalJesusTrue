@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MagickFinalJesus">
-        <activity android:name=".CrearCarta"></activity>
+        <activity android:name=".EditarEvento"></activity>
+        <activity android:name=".EditarCarta" />
+        <activity android:name=".CrearCarta" />
         <activity
             android:name=".UserMain"
             android:exported="true"

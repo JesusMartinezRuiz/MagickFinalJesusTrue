@@ -126,47 +126,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        db_ref.child("tienda").child("usuarios").addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-
-                val pojo_usuario2=snapshot.getValue(Usuario::class.java)
-                if(!pojo_usuario2!!.user_notificador.equals(androidId) && pojo_usuario2.estado_noti==Estado.CREADO){
-                    generarNotificacion(generador.incrementAndGet(),pojo_usuario2,"Se ha creado el Usuario "+pojo_usuario2.nombre,"Nuevos datos en la app",Registro::class.java)
-                    db_ref.child("tienda").child("usuarios").child(pojo_usuario2.id!!).child("estado_noti").setValue(Estado.NOTIFICADO)
-                }
-
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                val pojo_usuario2=snapshot.getValue(Usuario::class.java)
-                if(!pojo_usuario2!!.user_notificador.equals(androidId) && pojo_usuario2.estado_noti==Estado.MODIFICADO) {
-                    generarNotificacion(generador.incrementAndGet(),pojo_usuario2,"El usuario "+pojo_usuario2.nombreAnterior+" ahora se llama "+pojo_usuario2.nombre,"Actualizacion de Usuario en la app",MainActivity::class.java)
-                    db_ref.child("tienda").child("usuarios").child(pojo_usuario2.id!!).child("estado_noti")
-                        .setValue(Estado.NOTIFICADO)
-                }else if(!pojo_usuario2!!.user_notificador.equals(androidId) && pojo_usuario2.estado_noti==Estado.MODIFICADO_NOMBRE){
-                    generarNotificacion(generador.incrementAndGet(),pojo_usuario2,"Se ha modificado el usuario  "+pojo_usuario2.nombre,"Datos editados en la app",MainActivity::class.java)
-                    db_ref.child("tienda").child("usuarios").child(pojo_usuario2.id!!).child("estado_noti")
-                        .setValue(Estado.NOTIFICADO)
-                }
-
-
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                val pojo_usuario2=snapshot.getValue(Usuario::class.java)
-                if(!pojo_usuario2!!.user_notificador.equals(androidId)){
-                    generarNotificacion(generador.incrementAndGet(),pojo_usuario2,"Se ha borrado el usuario "+pojo_usuario2.nombre,"Datos borrados en la app",MainActivity::class.java)
-                }
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
 
     }
 
@@ -174,50 +133,6 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
         val actividad = Intent(applicationContext,MainActivity::class.java)
         startActivity (actividad)
-    }
-
-    private fun generarNotificacion(id_noti:Int, pojo: Serializable, contenido:String, titulo:String, destino:Class<*>) {
-        val idcanal = getString(R.string.id_canal)
-        val iconolargo = BitmapFactory.decodeResource(
-            resources,
-            R.drawable.logonotif
-        )
-        val actividad = Intent(applicationContext,destino)
-        actividad.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK )
-        actividad.putExtra("club", pojo)
-        val pendingIntent= PendingIntent.getActivity(this,0,actividad, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val notification = NotificationCompat.Builder(this, idcanal)
-            .setLargeIcon(iconolargo)
-            .setSmallIcon(R.drawable.logonotif)
-            .setContentTitle(titulo)
-            .setContentText(contenido)
-            .setSubText("sistema de información")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-            .build()
-
-        with(NotificationManagerCompat.from(this)){
-            notify(id_noti,notification)
-        }
-    }
-
-    private fun crearCanalNotificaciones() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val nombre = getString(R.string.nombre_canal)
-            val idcanal = getString(R.string.id_canal)
-            val descripcion = getString(R.string.description_canal)
-            val importancia = NotificationManager.IMPORTANCE_DEFAULT
-
-            val channel = NotificationChannel(idcanal, nombre, importancia).apply {
-                description = descripcion
-            }
-
-            val nm: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            nm.createNotificationChannel(channel)
-        }
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.magickfinaljesus
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.example.magickfinaljesus.databinding.RowEventosAdminBinding
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.io.Serializable
 
 private lateinit var db_ref: DatabaseReference
 
@@ -39,8 +41,15 @@ class AdaptadorEventosAdmin(val elementos: List<Eventos>, val contexto: EiActivi
             rowAforoOcAdmin.text= elem.aforo_ocupado.toString()
             rowFechaAdmin.text=elem.fecha
 
+            editarEventos.setOnClickListener {
+                val activity= Intent(contexto,EditarEvento::class.java)
+                activity.putExtra("evento",elem as Serializable)
+
+                contexto.startActivity(activity)
+            }
 
             }
+
         }
 
 
