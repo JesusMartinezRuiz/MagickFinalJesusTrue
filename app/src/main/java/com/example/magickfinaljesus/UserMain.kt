@@ -28,7 +28,7 @@ class UserMain : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityUserMainBinding
     lateinit var lista:ArrayList<Cartas>
-    lateinit var listaMisCartas:ArrayList<Cartas>
+    lateinit var listaMisCartas:ArrayList<ReservaCarta>
     lateinit var listaEventos:ArrayList<Eventos>
 
 
@@ -69,7 +69,7 @@ class UserMain : AppCompatActivity() {
         sto_ref= FirebaseStorage.getInstance().getReference()
         lista=ArrayList<Cartas>()
         listaEventos=ArrayList<Eventos>()
-        listaMisCartas=ArrayList<Cartas>()
+        listaMisCartas=ArrayList<ReservaCarta>()
 
 
 
@@ -129,44 +129,68 @@ class UserMain : AppCompatActivity() {
             })
 
         db_ref.child("tienda")
-            .child("reservas_cartas")
-            .addValueEventListener(object: ValueEventListener {
+            .child("reservas_carta")
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     listaMisCartas.clear()
+                    GlobalScope.launch(Dispatchers.IO) {
+                        snapshot.children.forEach { hijo: DataSnapshot? ->
+                            val pojo_pedido = hijo?.getValue(ReservaCarta::class.java)
 
-                    snapshot.children.forEach { hijo ->
-                        val pojo_reserva = hijo?.getValue(ReservaCarta::class.java)
+                            //USAMOS EL SEMAFORO PARA SINCRONIZAR: LINEALIZAMOS EL CODIGO
 
-                        db_ref.child("tienda")
-                            .child("cartas")
-                            .addValueEventListener(object : ValueEventListener {
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    snapshot.children.forEach { hijo ->
-                                        val pojo_carta = hijo?.getValue(Cartas::class.java)
-                                        if (pojo_reserva!!.id_usuario == idDeUsuario && pojo_reserva.aceptado == true) {
-                                            listaMisCartas.add(pojo_carta!!)
-                                        }
+                            var semaforo = CountDownLatch(2)
+
+                            db_ref.child("tienda")
+                                .child("cartas")
+                                .child(pojo_pedido!!.id_carta!!)
+                                .addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        val pojo_carta = snapshot?.getValue(Cartas::class.java)
+                                        //RELLENAR LOS DATOS PARA EL ADAPTADOR
+                                        pojo_pedido.nombre_carta = pojo_carta!!.nombre
+                                        pojo_pedido.img_carta = pojo_carta!!.img
+                                        pojo_pedido.precio=pojo_carta!!.precio
+                                        semaforo.countDown()
+
                                     }
 
-                                }
+                                    override fun onCancelled(error: DatabaseError) {
+                                        println(error.message)
+                                    }
+                                })
 
-                                override fun onCancelled(error: DatabaseError) {
+                            db_ref.child("tienda")
+                                .child("usuarios")
+                                .child(pojo_pedido!!.id_usuario!!)
+                                .addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        val pojo_user = snapshot?.getValue(Usuario::class.java)
+                                        //RELLENAR LOS DATOS PARA EL ADAPTADOR
+                                        pojo_pedido.nombre_user = pojo_user!!.nombre
+                                        semaforo.countDown()
 
-                                }
-                            })
+                                    }
+
+                                    override fun onCancelled(error: DatabaseError) {
+                                        println(error.message)
+                                    }
+                                })
+
+                            semaforo.await();
+                            if (pojo_pedido.id_usuario==idDeUsuario){
+                                listaMisCartas.add(pojo_pedido!!)
+                            }
+
+                        }
+
                     }
-
-
                 }
                 override fun onCancelled(error: DatabaseError) {
-
+                    println(error.message)
                 }
-
             })
-
-
-
-    }
+}
 
     override fun onBackPressed() {
         super.onBackPressed()

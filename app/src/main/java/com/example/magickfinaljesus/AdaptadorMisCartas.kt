@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 private lateinit var db_ref: DatabaseReference
 
-class AdaptadorMisCartas(val elementos: List<Cartas>, val con: UserMain) :
+class AdaptadorMisCartas(val elementos: List<ReservaCarta>, val con: UserMain,) :
     RecyclerView.Adapter<AdaptadorMisCartas.ViewHolder>() {
 
 
@@ -32,9 +32,9 @@ class AdaptadorMisCartas(val elementos: List<Cartas>, val con: UserMain) :
         var elem = elementos[position]
 
         with(holder.bind){
-            nombreMisCartas.text=elem.nombre
+            nombreMisCartas.text=elem.nombre_carta
             precioMisCartas.text=elem.precio.toString()
-            Glide.with(con).load(elem.img).into(ivMisCartas)
+            Glide.with(con).load(elem.img_carta).into(ivMisCartas)
         }
 
     }
