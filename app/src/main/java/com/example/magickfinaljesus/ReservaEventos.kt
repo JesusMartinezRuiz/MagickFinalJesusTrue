@@ -4,4 +4,5 @@ import java.io.Serializable
 
 data class ReservaEventos(var id:String?=null,
                    var id_usuario: String? = null,
-                   var id_evento:String?=null): Serializable
+                   var id_evento:String?=null,
+                   var nombreUser:String?=null): Serializable

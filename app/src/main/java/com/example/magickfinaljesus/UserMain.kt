@@ -25,7 +25,7 @@ import java.util.concurrent.CountDownLatch
 
 class UserMain : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+
     private lateinit var binding: ActivityUserMainBinding
     lateinit var lista:ArrayList<Cartas>
     lateinit var listaMisCartas:ArrayList<ReservaCarta>

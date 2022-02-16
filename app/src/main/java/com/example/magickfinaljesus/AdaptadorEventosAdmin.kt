@@ -42,6 +42,12 @@ class AdaptadorEventosAdmin(val elementos: List<Eventos>, val contexto: EiActivi
             rowAforoOcAdmin.text= elem.aforo_ocupado.toString()
             rowFechaAdmin.text=elem.fecha
 
+            verMiembros.setOnClickListener {
+                val inte = Intent (contexto, VerMiembros::class.java)
+                inte.putExtra("Evento",elem)
+                contexto.startActivity(inte)
+            }
+
 
             }
 

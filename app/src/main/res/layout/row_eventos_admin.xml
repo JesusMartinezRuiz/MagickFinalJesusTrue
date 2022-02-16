@@ -80,4 +80,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/row_precioEventoAdmin"
         app:layout_constraintEnd_toStartOf="@+id/row_precioEventoAdmin" />
 
+    <Button
+        android:id="@+id/verMiembros"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:text="Ver Miembros"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

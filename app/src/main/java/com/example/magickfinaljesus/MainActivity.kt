@@ -13,6 +13,7 @@ import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.android.material.textfield.TextInputEditText
@@ -54,6 +55,17 @@ class MainActivity : AppCompatActivity() {
         val app_id = getString(R.string.app_name)
         val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
+
+        var modo=SP.getString(
+            getString(R.string.modo),
+            "falloShared"
+        ).toString()
+
+        if (modo=="night"){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         login.setOnClickListener {
 

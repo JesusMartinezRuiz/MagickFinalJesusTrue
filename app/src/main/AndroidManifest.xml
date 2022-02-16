@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MagickFinalJesus">
-        <activity android:name=".Grafico"></activity>
+        <activity android:name=".VerMiembros"></activity>
+        <activity android:name=".Grafico" />
         <activity android:name=".Configuracion" />
         <activity android:name=".Autor" />
         <activity android:name=".CrearEvento" />
