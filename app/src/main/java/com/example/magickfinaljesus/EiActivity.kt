@@ -3,6 +3,7 @@ package com.example.magickfinaljesus
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -27,6 +28,7 @@ class EiActivity : AppCompatActivity() {
     lateinit var listaPedidos:ArrayList<ReservaCarta>
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
+
 
 
     val listaCartaAdmin by lazy{
@@ -56,6 +58,8 @@ class EiActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         db_ref= FirebaseDatabase.getInstance().getReference()
         sto_ref= FirebaseStorage.getInstance().getReference()
@@ -183,5 +187,41 @@ class EiActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val app_id = getString(R.string.app_name)
+        val sp_name = "${app_id}_SP"
+        var SP = getSharedPreferences(sp_name,0)
+
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                val ir_creditos = Intent(applicationContext, Configuracion::class.java)
+                startActivity(ir_creditos)
+                true
+            }
+            R.id.action_author -> {
+                val intent = Intent(applicationContext, Autor::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_grafico ->{
+                val intent = Intent(applicationContext, Grafico::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_logOut ->{
+                with(SP.edit()){
+                    putString("ID", "")
+                    commit()
+                }
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 }

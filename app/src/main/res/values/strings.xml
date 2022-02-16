@@ -17,7 +17,10 @@
     <string name="nav_header_title">Administrador</string>
     <string name="nav_header_subtitle">Bienvenido, estamos en la versión 1.1</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configuración</string>
+    <string name="action_author">Autor</string>
+    <string name="action_grafico">Gráfico</string>
+    <string name="action_logOut">Log Out</string>
 
     <string name="menu_home">Cartas</string>
     <string name="menu_gallery">Eventos</string>

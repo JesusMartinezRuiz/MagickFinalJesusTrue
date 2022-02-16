@@ -6,4 +6,22 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_author"
+        android:orderInCategory="100"
+        android:title="@string/action_author"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_grafico"
+        android:orderInCategory="100"
+        android:title="@string/action_grafico"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logOut"
+        android:orderInCategory="100"
+        android:title="@string/action_logOut"
+        app:showAsAction="never" />
 </menu>
