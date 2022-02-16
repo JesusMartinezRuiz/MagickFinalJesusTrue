@@ -24,8 +24,10 @@ class EiActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEiBinding
     lateinit var listaAdmin:ArrayList<Cartas>
     lateinit var listaAdminEventos:ArrayList<Eventos>
+    lateinit var listaPedidos:ArrayList<ReservaCarta>
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
+
 
     val listaCartaAdmin by lazy{
         listaAdmin
@@ -45,6 +47,10 @@ class EiActivity : AppCompatActivity() {
         AdaptadorEventosAdmin(listaEventoAdmin,this)
     }
 
+    val adaptadorPedidos by lazy{
+        AdaptadorPedidos(listaPedidos,this)
+    }
+
     //el adaptador de pedidos aqui igual que este
 
 
@@ -55,6 +61,7 @@ class EiActivity : AppCompatActivity() {
         sto_ref= FirebaseStorage.getInstance().getReference()
         listaAdmin=ArrayList<Cartas>()
         listaAdminEventos=ArrayList()
+        listaPedidos= ArrayList<ReservaCarta>()
 
 
 
@@ -108,6 +115,23 @@ class EiActivity : AppCompatActivity() {
                         val pojo_evento=hijo?.getValue(Eventos::class.java)
                             listaAdminEventos.add(pojo_evento!!)
 
+
+                    }
+
+                }
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
+        db_ref.child("tienda")
+            .child("reservas_carta")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    listaPedidos.clear()
+                    snapshot.children.forEach { hijo->
+                        val pojo_pedido=hijo?.getValue(ReservaCarta::class.java)
+                        listaPedidos.add(pojo_pedido!!)
 
                     }
 

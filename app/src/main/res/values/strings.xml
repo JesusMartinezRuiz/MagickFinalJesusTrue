@@ -10,7 +10,7 @@
     <string name="title_activity_user_main">MainActivity</string>
     <string name="title_home">Cartas</string>
     <string name="title_dashboard">Eventos</string>
-    <string name="title_notifications">Mis Cosas</string>
+    <string name="title_notifications">Mis Cartas</string>
     <string name="title_activity_admin_main">AdminMain</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -21,7 +21,7 @@
 
     <string name="menu_home">Cartas</string>
     <string name="menu_gallery">Eventos</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">Pedidos</string>
     <string name="title_activity_admin_main_navigation">AdminMainNavigation</string>
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
     <string name="title_activity_administrador_main">AdministradorMain</string>

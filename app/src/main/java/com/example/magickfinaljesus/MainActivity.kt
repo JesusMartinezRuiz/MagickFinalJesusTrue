@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val app_id = getString(R.string.app_name)
-        val sp_name = "${app_id}_SP_Login"
+        val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
 
         login.setOnClickListener {

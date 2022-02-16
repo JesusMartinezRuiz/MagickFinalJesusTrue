@@ -36,18 +36,6 @@ class VerCartasFragment : Fragment() {
         AdaptadorCartas(ma.listaCarta, ma.contextoUserMain , colorChecked,ma.idDeUsuario)
     }
 
-//    val idDeUsuario by lazy{
-//        val app_id = getString(R.string.app_name)
-//        val sp_name = "${app_id}_SP_Login"
-//        var SP = getSharedPreferences(sp_name,0)
-//
-//        SP.getString(
-//            getString(R.string.id),
-//            "falloShared"
-//        ).toString()
-//
-//    }
-
     // This property is only valid between onCreateView and
     // onDestroyView.
 

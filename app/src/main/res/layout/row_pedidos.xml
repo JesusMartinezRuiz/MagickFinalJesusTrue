@@ -14,30 +14,41 @@
         app:srcCompat="@drawable/logonotif" />
 
     <TextView
-        android:id="@+id/nombrePedido"
+        android:id="@+id/nombreUserPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/precioPedido"
-        app:layout_constraintStart_toStartOf="@+id/precioPedido"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/row_ivCartaPedido"
+        app:layout_constraintTop_toBottomOf="@+id/nombreCartaPedido" />
 
     <TextView
         android:id="@+id/precioPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="30dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/row_ivCartaPedido"
-        app:layout_constraintStart_toEndOf="@+id/row_ivCartaPedido" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nombreUserPedido"
+        app:layout_constraintStart_toStartOf="@+id/nombreUserPedido"
+        app:layout_constraintTop_toBottomOf="@+id/nombreUserPedido" />
 
     <Button
         android:id="@+id/aceptarPedido"
-        android:layout_width="103dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Aceptar Compra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nombreCartaPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/nombreUserPedido"
+        app:layout_constraintEnd_toEndOf="@+id/nombreUserPedido"
+        app:layout_constraintStart_toStartOf="@+id/nombreUserPedido"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

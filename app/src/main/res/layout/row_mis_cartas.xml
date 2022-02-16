@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivMisCartas"
+        android:layout_width="126dp"
+        android:layout_height="176dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logonotif" />
+
+    <TextView
+        android:id="@+id/nombreMisCartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/precioMisCartas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivMisCartas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/precioMisCartas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nombreMisCartas"
+        app:layout_constraintStart_toStartOf="@+id/nombreMisCartas"
+        app:layout_constraintTop_toBottomOf="@+id/nombreMisCartas" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        app:layout_constraintEnd_toStartOf="@+id/nombreMisCartas"
+        app:layout_constraintTop_toTopOf="@+id/nombreMisCartas" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="€"
+        app:layout_constraintBottom_toBottomOf="@+id/precioMisCartas"
+        app:layout_constraintStart_toEndOf="@+id/precioMisCartas"
+        app:layout_constraintTop_toTopOf="@+id/precioMisCartas" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio:"
+        app:layout_constraintBottom_toBottomOf="@+id/precioMisCartas"
+        app:layout_constraintEnd_toStartOf="@+id/precioMisCartas"
+        app:layout_constraintTop_toTopOf="@+id/precioMisCartas"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

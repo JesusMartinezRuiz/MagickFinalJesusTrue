@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.magickfinaljesus.databinding.RowCartaBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
 import java.util.*
 
 private lateinit var db_ref: DatabaseReference
@@ -39,6 +41,9 @@ class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val elem = elementosFiltrados[position]
 
+        val hoy: Calendar = Calendar.getInstance()
+        val formateador: SimpleDateFormat = SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+
         with(holder.bind){
             nombreRowCarta.text = elem.nombre
             Glide.with(con).load(elem.img).into(ivRowCarta)
@@ -46,9 +51,9 @@ class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:
 
             comprarRowCarta.setOnClickListener {
                 val id_reservaCartas=db_ref.child("tienda").child("reservas_carta").push().key!!
-                val nueva_reserva=ReservaEventos(id_reservaCartas,idUsuario,elem.id)
+                val nueva_reserva=ReservaCarta(id_reservaCartas,idUsuario,elem.id,hoy.toString(),false)
                 db_ref.child("tienda").child("reservas_carta").child(id_reservaCartas).setValue(nueva_reserva)
-                comprarRowCarta.visibility=View.INVISIBLE
+                Toast.makeText(con, "Se ha enviado una reserva", Toast.LENGTH_SHORT).show()
 
             }
 

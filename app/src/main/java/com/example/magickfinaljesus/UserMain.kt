@@ -20,11 +20,15 @@ class UserMain : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserMainBinding
     lateinit var lista:ArrayList<Cartas>
+    lateinit var listaMisCartas:ArrayList<Cartas>
     lateinit var listaEventos:ArrayList<Eventos>
+
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
 
-
+    val adaptadorMisCartas by lazy{
+        AdaptadorMisCartas(listaMisCartas,this)
+    }
 
     val adaptadorEvento by lazy{
         AdaptadorEventos(listaEventos,this, idDeUsuario)
@@ -56,6 +60,8 @@ class UserMain : AppCompatActivity() {
         sto_ref= FirebaseStorage.getInstance().getReference()
         lista=ArrayList<Cartas>()
         listaEventos=ArrayList<Eventos>()
+        listaMisCartas=ArrayList<Cartas>()
+
 
 
         binding = ActivityUserMainBinding.inflate(layoutInflater)
@@ -112,6 +118,40 @@ class UserMain : AppCompatActivity() {
 
                 }
             })
+
+        db_ref.child("tienda")
+            .child("reservas_cartas")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    listaMisCartas.clear()
+                    snapshot.children.forEach { hijo->
+                        val pojo_reserva=hijo?.getValue(ReservaCarta::class.java)
+
+                        db_ref.child("tienda")
+                            .child("cartas")
+                            .addValueEventListener(object: ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    snapshot.children.forEach { hijo->
+                                        val pojo_carta=hijo?.getValue(Cartas::class.java)
+                                        if (pojo_reserva!!.id_usuario==idDeUsuario && pojo_reserva.aceptado==true){
+                                            listaMisCartas.add(pojo_carta!!)
+                                        }
+                                    }
+
+                                }
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+                    }
+
+                }
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
+
 
     }
 

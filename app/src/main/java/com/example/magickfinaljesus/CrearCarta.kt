@@ -100,7 +100,7 @@ class CrearCarta : AppCompatActivity() {
                         val nueva_carta = Cartas(
                             identificador,
                             nombre.text.toString().trim(),
-                            precio.text.toString().toInt(),
+                            precio.text.toString().toFloat(),
                             disponible.isChecked,
                             url_firebase.toString(),
                             color
@@ -130,7 +130,7 @@ class CrearCarta : AppCompatActivity() {
                         val nueva_carta = Cartas(
                             identificador,
                             nombre.text.toString().trim(),
-                            precio.text.toString().toInt(),
+                            precio.text.toString().toFloat(),
                             disponible.isChecked,
                             "",
                             color

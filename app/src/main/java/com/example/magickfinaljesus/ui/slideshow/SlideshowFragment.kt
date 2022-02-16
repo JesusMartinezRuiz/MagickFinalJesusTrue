@@ -2,6 +2,7 @@ package com.example.magikfinaljesus.ui.slideshow
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -17,7 +18,7 @@ class SlideshowFragment : Fragment() {
 
     private lateinit var slideshowViewModel: SlideshowViewModel
     private var _binding: FragmentSlideshowBinding? = null
-
+    lateinit var menu: Menu
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -49,7 +50,7 @@ class SlideshowFragment : Fragment() {
         ma.FAB_manager(0)
 
         binding.rvPedidos.apply {
-            adapter= ma.adaptadorEventoAdmin
+            adapter= ma.adaptadorPedidos
             layoutManager= LinearLayoutManager(ma)
             setHasFixedSize(true)
         }
