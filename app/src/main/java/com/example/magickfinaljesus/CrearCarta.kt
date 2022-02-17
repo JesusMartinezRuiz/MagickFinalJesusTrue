@@ -67,17 +67,18 @@ class CrearCarta : AppCompatActivity() {
 
         crear.setOnClickListener {
 
-            if (blanco.isChecked){
-                color="blanco"
-            }else if (negro.isChecked){
-                color="negro"
-            }else if (azul.isChecked){
-                color="azul"
-            }else if (rojo.isChecked){
-                color="rojo"
-            }else if (verde.isChecked){
-                color="verde"
-            }
+            if (isValid()){
+                if (blanco.isChecked){
+                    color="blanco"
+                }else if (negro.isChecked){
+                    color="negro"
+                }else if (azul.isChecked){
+                    color="azul"
+                }else if (rojo.isChecked){
+                    color="rojo"
+                }else if (verde.isChecked){
+                    color="verde"
+                }
 
 
                 val identificador=db_ref.child("tienda")
@@ -152,6 +153,9 @@ class CrearCarta : AppCompatActivity() {
 
                 val actividad = Intent(applicationContext,EiActivity::class.java)
                 startActivity (actividad)
+            }else{
+
+            }
 
 
         }
@@ -241,6 +245,41 @@ class CrearCarta : AppCompatActivity() {
         val ficheroImagen: File?= File.createTempFile(nombreFichero!!,".jpg",carpetaDir)
 
         return ficheroImagen!!
+    }
+
+    fun validNombre(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.length<5){
+            e.error = "Debe ser mayor a 5 caracteres"
+            isValid = false
+        }
+        return isValid
+    }
+    fun validPrecio(e: EditText):Boolean{
+        var isValid = true
+         if(e.text.length==0){
+            e.error = "Inserta un precio"
+            isValid = false
+        }
+        return isValid
+    }
+
+
+    fun isValid():Boolean{
+        var validated = true
+        val checkers = listOf(
+            Pair(nombre, this::validNombre),
+            Pair(precio, this::validPrecio),
+
+        )
+        for(c in checkers){
+            val x = c.first
+            val f = c.second
+            val y = f(x)
+            validated = y
+            if(!validated) break
+        }
+        return validated
     }
 
 

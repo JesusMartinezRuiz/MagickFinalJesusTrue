@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -53,43 +54,69 @@ class CrearEvento : AppCompatActivity() {
 
         crear.setOnClickListener {
 
-            val identificador=db_ref.child("tienda")
-                .child("eventos").push().key
+            if(isValid()){
+                val identificador=db_ref.child("tienda")
+                    .child("eventos").push().key
 
 
-            val fecha= Calendar.getInstance()
-            val today=("${fecha.get(Calendar.YEAR)}-${fecha.get(Calendar.MONTH)+1}-${fecha.get(
-                Calendar.DAY_OF_MONTH)}").toString()
+                val fecha= Calendar.getInstance()
+                val today=("${fecha.get(Calendar.YEAR)}-${fecha.get(Calendar.MONTH)+1}-${fecha.get(
+                    Calendar.DAY_OF_MONTH)}").toString()
 
 
 
-            GlobalScope.launch(Dispatchers.IO) {
+                GlobalScope.launch(Dispatchers.IO) {
 
 
-                if (url_evento != null) {
+                    if (url_evento != null) {
 
-                    val url_firebase = sto_ref.child("tienda")
-                        .child("eventos")
-                        .child(identificador!!)
-                        .putFile(url_evento!!)
-                        .await().storage.downloadUrl.await()
+                        val url_firebase = sto_ref.child("tienda")
+                            .child("eventos")
+                            .child(identificador!!)
+                            .putFile(url_evento!!)
+                            .await().storage.downloadUrl.await()
 
 
-                    val nuevo_evento = Eventos(
-                        identificador,
-                        nombre.text.toString().trim(),
-                        precio.text.toString().toInt(),
-                        aforoMax.text.toString().toInt(),
-                        0,
-                        today,
-                        url_firebase.toString()
+                        val nuevo_evento = Eventos(
+                            identificador,
+                            nombre.text.toString().trim(),
+                            precio.text.toString().toInt(),
+                            aforoMax.text.toString().toInt(),
+                            0,
+                            today,
+                            url_firebase.toString()
 
-                    )
+                        )
 
-                    if (existe_carta(nombre.text.toString().trim())) {
-                        tostadaCorrutina("Ya hay una carta con este nombre")
+                        if (existe_carta(nombre.text.toString().trim())) {
+                            tostadaCorrutina("Ya hay una carta con este nombre")
+
+                        } else {
+                            db_ref.child("tienda")
+                                .child("eventos")
+                                .child(identificador!!)
+                                .setValue(nuevo_evento)
+
+                            tostadaCorrutina("Evento Creado")
+
+
+                        }
+
+
 
                     } else {
+
+                        val nuevo_evento = Eventos(
+                            identificador,
+                            nombre.text.toString().trim(),
+                            precio.text.toString().toInt(),
+                            aforoMax.text.toString().toInt(),
+                            0,
+                            today,
+                            ""
+
+                        )
+
                         db_ref.child("tienda")
                             .child("eventos")
                             .child(identificador!!)
@@ -100,35 +127,16 @@ class CrearEvento : AppCompatActivity() {
 
                     }
 
-
-
-                } else {
-
-                    val nuevo_evento = Eventos(
-                        identificador,
-                        nombre.text.toString().trim(),
-                        precio.text.toString().toInt(),
-                        aforoMax.text.toString().toInt(),
-                        0,
-                        today,
-                        ""
-
-                    )
-
-                    db_ref.child("tienda")
-                        .child("eventos")
-                        .child(identificador!!)
-                        .setValue(nuevo_evento)
-
-                    tostadaCorrutina("Evento Creado")
-
-
                 }
+
+                val actividad = Intent(applicationContext,EiActivity::class.java)
+                startActivity (actividad)
+
+
+            }else{
 
             }
 
-            val actividad = Intent(applicationContext,EiActivity::class.java)
-            startActivity (actividad)
         }
 
 
@@ -216,6 +224,55 @@ class CrearEvento : AppCompatActivity() {
 
         return ficheroImagen!!
     }
+
+    fun validNombre(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.length<5){
+            e.error = "Debe ser mayor a 5 caracteres"
+            isValid = false
+        }
+        return isValid
+    }
+    fun validPrecio(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.length==0){
+            e.error = "Inserta un precio"
+            isValid = false
+        }
+        return isValid
+    }
+
+    fun validAforoMax(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.length==0){
+            e.error = "Inserta un Aforo"
+            isValid = false
+        }else if(e.text.length<1){
+            e.error = "Debe ser mayor a 1 caracter"
+            isValid = false
+        }
+        return isValid
+    }
+
+
+    fun isValid():Boolean{
+        var validated = true
+        val checkers = listOf(
+            Pair(nombre, this::validNombre),
+            Pair(precio, this::validPrecio),
+            Pair(aforoMax, this::validAforoMax)
+
+            )
+        for(c in checkers){
+            val x = c.first
+            val f = c.second
+            val y = f(x)
+            validated = y
+            if(!validated) break
+        }
+        return validated
+    }
+
 
 
     suspend fun tostadaCorrutina(texto:String){

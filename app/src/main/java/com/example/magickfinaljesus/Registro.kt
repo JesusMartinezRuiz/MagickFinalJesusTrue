@@ -236,6 +236,7 @@ class Registro : AppCompatActivity() {
         }
         return isValid
     }
+
     fun validPass(e: EditText):Boolean{
         var isValid = true
         if(e.text.length<5){
@@ -250,6 +251,7 @@ class Registro : AppCompatActivity() {
         }
         return isValid
     }
+
     fun validRepass(e: EditText):Boolean{
         var isValid = true
         if(e.text.toString() != pass.text.toString()){
@@ -292,13 +294,7 @@ class Registro : AppCompatActivity() {
         return validated
     }
 
-    fun sendForm(v: View){
-        if(isValid()){
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
 
-        }
-    }
 
 
 

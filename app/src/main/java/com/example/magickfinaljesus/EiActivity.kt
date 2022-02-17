@@ -185,6 +185,9 @@ class EiActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
 
+        val actividad = Intent(applicationContext,MainActivity::class.java)
+        startActivity (actividad)
+
     }
 
     fun FAB_manager(mode:Int){
