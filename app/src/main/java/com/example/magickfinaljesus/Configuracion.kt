@@ -28,6 +28,9 @@ class Configuracion : AppCompatActivity() {
         val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
 
+        val tema = SP.getBoolean(getString(R.string.modo),false)
+
+        cambiarTema.isChecked=tema
 
 
         cambiarTema.setOnCheckedChangeListener { _, b ->
@@ -43,12 +46,13 @@ class Configuracion : AppCompatActivity() {
                     getString(R.string.modo),
                     b
                 )
+                apply()
             }
 
-            cambiarTema.isChecked=b
             AppCompatDelegate.setDefaultNightMode(tema)
 
         }
+
 
 
     }

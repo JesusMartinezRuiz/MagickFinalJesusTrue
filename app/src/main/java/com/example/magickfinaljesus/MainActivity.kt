@@ -55,6 +55,16 @@ class MainActivity : AppCompatActivity() {
         var SP = getSharedPreferences(sp_name,0)
         
 
+        val tema = SP.getBoolean(getString(R.string.modo),false)
+
+        val theme = if (tema){
+            AppCompatDelegate.MODE_NIGHT_YES
+        }else{
+            AppCompatDelegate.MODE_NIGHT_NO
+        }
+
+        AppCompatDelegate.setDefaultNightMode(theme)
+
 
         login.setOnClickListener {
 

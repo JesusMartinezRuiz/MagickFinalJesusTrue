@@ -208,7 +208,7 @@ class UserMain : AppCompatActivity() {
                                 })
 
                             semaforo.await();
-                            if (pojo_pedido.id_usuario==idDeUsuario){
+                            if (pojo_pedido.id_usuario==idDeUsuario && pojo_pedido.aceptado==true){
                                 listaMisCartas.add(pojo_pedido!!)
                             }
 

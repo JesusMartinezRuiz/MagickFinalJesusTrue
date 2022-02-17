@@ -9,6 +9,9 @@
         android:id="@+id/row_ivEvento"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -17,6 +20,7 @@
         android:id="@+id/row_nombreEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="NombreEvento"
         app:layout_constraintBottom_toTopOf="@+id/row_aforoMaxEvento"
         app:layout_constraintStart_toEndOf="@+id/row_ivEvento"
@@ -27,10 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aforo_ocupado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/row_fecha_evento"
-        app:layout_constraintStart_toEndOf="@+id/row_ivEvento"
-        app:layout_constraintTop_toBottomOf="@+id/row_aforoMaxEvento" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/row_aforoMaxEvento"
@@ -38,7 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Aforo_max"
         app:layout_constraintBottom_toTopOf="@+id/row_aforo_ocupadoEvento"
-        app:layout_constraintStart_toStartOf="@+id/row_aforo_ocupadoEvento"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/row_nombreEvento" />
 
     <TextView
@@ -47,14 +49,15 @@
         android:layout_height="wrap_content"
         android:text="Fecha"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row_aforoMaxEvento" />
 
     <ImageView
         android:id="@+id/row_apuntarseEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/row_aforoMaxEvento"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <TextView
@@ -63,17 +66,17 @@
         android:layout_height="wrap_content"
         android:text="Af_max:"
         app:layout_constraintBottom_toBottomOf="@+id/row_aforoMaxEvento"
-        app:layout_constraintEnd_toStartOf="@+id/row_aforoMaxEvento"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/row_aforoMaxEvento" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="Af_oc:"
-        app:layout_constraintBottom_toBottomOf="@+id/row_aforo_ocupadoEvento"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/row_aforo_ocupadoEvento" />
+        app:layout_constraintBottom_toBottomOf="@+id/row_ivEvento"
+        app:layout_constraintStart_toEndOf="@+id/row_ivEvento" />
 
     <TextView
         android:id="@+id/row_precioEvento"
@@ -94,11 +97,4 @@
         app:layout_constraintEnd_toStartOf="@+id/row_precioEvento"
         app:layout_constraintTop_toTopOf="@+id/row_precioEvento" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Empieza:"
-        app:layout_constraintEnd_toStartOf="@+id/row_fecha_evento"
-        app:layout_constraintTop_toTopOf="@+id/row_fecha_evento" />
 </androidx.constraintlayout.widget.ConstraintLayout>

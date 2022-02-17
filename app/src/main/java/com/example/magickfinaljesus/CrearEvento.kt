@@ -80,7 +80,7 @@ class CrearEvento : AppCompatActivity() {
                         val nuevo_evento = Eventos(
                             identificador,
                             nombre.text.toString().trim(),
-                            precio.text.toString().toInt(),
+                            precio.text.toString().toFloat(),
                             aforoMax.text.toString().toInt(),
                             0,
                             today,
@@ -109,7 +109,7 @@ class CrearEvento : AppCompatActivity() {
                         val nuevo_evento = Eventos(
                             identificador,
                             nombre.text.toString().trim(),
-                            precio.text.toString().toInt(),
+                            precio.text.toString().toFloat(),
                             aforoMax.text.toString().toInt(),
                             0,
                             today,
