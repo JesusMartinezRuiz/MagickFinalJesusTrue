@@ -1,110 +1,89 @@
 {
   "tienda" : {
     "cartas" : {
-      "-MvxlXWqkR3XEVE-G3eU" : {
-        "color" : "negro",
-        "disponible" : true,
-        "id" : "-MvxlXWqkR3XEVE-G3eU",
-        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fcartas%2F-MvxlXWqkR3XEVE-G3eU?alt=media&token=22e96b18-e2b3-4d36-950f-866a723c39a3",
-        "nombre" : "aaee",
-        "precio" : 32
-      },
-      "asndioasndpiandp" : {
+      "-Mw4SJ5pQJarUnEG53wB" : {
         "color" : "azul",
         "disponible" : true,
-        "id" : "asndioasndpiandp",
-        "img" : "nomejofas",
-        "nombre" : "El Chuchesumare",
-        "precio" : 22
+        "id" : "-Mw4SJ5pQJarUnEG53wB",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fcartas%2F-Mw4SJ5pQJarUnEG53wB?alt=media&token=262986c4-bf62-42dd-ac04-b637484d8a60",
+        "nombre" : "Draco suturado",
+        "precio" : 15.5
       },
-      "dwdewdw" : {
-        "color" : "verde",
+      "-Mw4SSIzMN3rqtEWp72X" : {
+        "color" : "blanco",
         "disponible" : true,
-        "id" : "dwdewdw",
-        "img" : "nada",
-        "nombre" : "pruebacarta",
-        "precio" : 4
+        "id" : "-Mw4SSIzMN3rqtEWp72X",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fcartas%2F-Mw4SSIzMN3rqtEWp72X?alt=media&token=2ee994af-5884-4302-945b-88d0e56fb903",
+        "nombre" : "Had matriarca",
+        "precio" : 5.550000190734863
       },
-      "iashdasbd" : {
+      "-Mw4SbPZYtQGNwR2tjQX" : {
         "color" : "rojo",
         "disponible" : true,
-        "id" : "iashdasbd",
-        "img" : "dadasd",
-        "nombre" : "Fuego bendito, Mikael",
-        "precio" : 40
+        "id" : "-Mw4SbPZYtQGNwR2tjQX",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fcartas%2F-Mw4SbPZYtQGNwR2tjQX?alt=media&token=28a6d254-e8aa-42af-a5fe-fb464690158c",
+        "nombre" : "Despejar un camino",
+        "precio" : 2.8499999046325684
+      },
+      "-Mw4ShhVQlkGTMJqqCAH" : {
+        "color" : "verde",
+        "disponible" : true,
+        "id" : "-Mw4ShhVQlkGTMJqqCAH",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fcartas%2F-Mw4ShhVQlkGTMJqqCAH?alt=media&token=7a75f2c1-3c10-4e20-bf4d-2b2ff52d5cd2",
+        "nombre" : "Hidra del Génesis",
+        "precio" : 20
+      },
+      "-Mw4SrGMjPJ9AovE25Wh" : {
+        "color" : "negro",
+        "disponible" : true,
+        "id" : "-Mw4SrGMjPJ9AovE25Wh",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fcartas%2F-Mw4SrGMjPJ9AovE25Wh?alt=media&token=54814af1-f22e-4cd3-817e-78c795c437ea",
+        "nombre" : "On Nixilis Liberado",
+        "precio" : 12.649999618530273
       }
     },
     "eventos" : {
-      "-MvyomHl_CneOFT8p4cf" : {
+      "-Mw4TxPHTdEi5nEgkIoP" : {
         "aforo_max" : 30,
-        "aforo_ocupado" : 2,
-        "fecha" : "2022-2-15",
-        "id" : "-MvyomHl_CneOFT8p4cf",
-        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Feventos%2F-MvyomHl_CneOFT8p4cf?alt=media&token=7d340267-9275-4d69-b7e5-4c0f100bc75c",
-        "nombre" : "EventoDelSiglo",
+        "aforo_ocupado" : 1,
+        "fecha" : "2022-2-17",
+        "id" : "-Mw4TxPHTdEi5nEgkIoP",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Feventos%2F-Mw4TxPHTdEi5nEgkIoP?alt=media&token=fd481177-ab44-4155-9416-5d1e1f8718c5",
+        "nombre" : "Fortnite Sky Fire",
+        "precio" : 33.849998474121094
+      },
+      "-Mw4VCkFXQ6MTUTmaZr0" : {
+        "aforo_max" : 900,
+        "aforo_ocupado" : 0,
+        "fecha" : "2022-2-17",
+        "id" : "-Mw4VCkFXQ6MTUTmaZr0",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Feventos%2F-Mw4VCkFXQ6MTUTmaZr0?alt=media&token=84e07ef7-c405-4d87-9a73-c4eaf5a8d11d",
+        "nombre" : "Torneo normal",
         "precio" : 20
       },
-      "ejemploEvento2" : {
-        "aforo_max" : 15,
-        "aforo_ocupado" : 3,
-        "fecha" : "22-05-2021",
-        "id" : "ejemploEvento2",
-        "nombre" : "Evento2Ejemplar",
-        "precio" : 45
-      },
-      "ejemploevento" : {
+      "-Mw4VSZmX2ux2x-ajeab" : {
         "aforo_max" : 10,
-        "aforo_ocupado" : 6,
-        "fecha" : "22-05-2021",
-        "id" : "ejemploevento",
-        "nombre" : "EventoEjemplar",
-        "precio" : 15
+        "aforo_ocupado" : 0,
+        "fecha" : "2022-2-17",
+        "id" : "-Mw4VSZmX2ux2x-ajeab",
+        "img" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Feventos%2F-Mw4VSZmX2ux2x-ajeab?alt=media&token=f8e7695c-bfec-4ad9-9707-c5dc278aef9a",
+        "nombre" : "Cartas Time",
+        "precio" : 30.350000381469727
       }
     },
     "reservas_carta" : {
-      "-Mw1tRy0-UKoP60-k1lR" : {
+      "-Mw4WhL1t5rWUAT1MvXg" : {
         "aceptado" : true,
-        "id" : "-Mw1tRy0-UKoP60-k1lR",
-        "id_carta" : "-MvxlXWqkR3XEVE-G3eU",
-        "id_usuario" : "-Mv5B3GkZX39Em9DvZyY"
-      },
-      "-Mw2F6VMrNB4PzS6d4aS" : {
-        "aceptado" : true,
-        "fecha" : "java.util.GregorianCalendar[time=1645027029258,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=java.util.SimpleTimeZone[id=GMT,offset=0,dstSavings=3600000,useDaylight=false,startYear=0,startMode=0,startMonth=0,startDay=0,startDayOfWeek=0,startTime=0,startTimeMode=0,endMode=0,endMonth=0,endDay=0,endDayOfWeek=0,endTime=0,endTimeMode=0],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2022,MONTH=1,WEEK_OF_YEAR=8,WEEK_OF_MONTH=3,DAY_OF_MONTH=16,DAY_OF_YEAR=47,DAY_OF_WEEK=4,DAY_OF_WEEK_IN_MONTH=3,AM_PM=1,HOUR=3,HOUR_OF_DAY=15,MINUTE=57,SECOND=9,MILLISECOND=258,ZONE_OFFSET=0,DST_OFFSET=0]",
-        "id" : "-Mw2F6VMrNB4PzS6d4aS",
-        "id_carta" : "asndioasndpiandp",
-        "id_usuario" : "-MvZIKZi3plGEzI3dm7D"
-      },
-      "-Mw2F7NWIOAJIe83n-lW" : {
-        "aceptado" : true,
-        "fecha" : "java.util.GregorianCalendar[time=1645027029295,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=java.util.SimpleTimeZone[id=GMT,offset=0,dstSavings=3600000,useDaylight=false,startYear=0,startMode=0,startMonth=0,startDay=0,startDayOfWeek=0,startTime=0,startTimeMode=0,endMode=0,endMonth=0,endDay=0,endDayOfWeek=0,endTime=0,endTimeMode=0],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2022,MONTH=1,WEEK_OF_YEAR=8,WEEK_OF_MONTH=3,DAY_OF_MONTH=16,DAY_OF_YEAR=47,DAY_OF_WEEK=4,DAY_OF_WEEK_IN_MONTH=3,AM_PM=1,HOUR=3,HOUR_OF_DAY=15,MINUTE=57,SECOND=9,MILLISECOND=295,ZONE_OFFSET=0,DST_OFFSET=0]",
-        "id" : "-Mw2F7NWIOAJIe83n-lW",
-        "id_carta" : "dwdewdw",
+        "fecha" : "java.util.GregorianCalendar[time=1645065194091,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=java.util.SimpleTimeZone[id=GMT,offset=0,dstSavings=3600000,useDaylight=false,startYear=0,startMode=0,startMonth=0,startDay=0,startDayOfWeek=0,startTime=0,startTimeMode=0,endMode=0,endMonth=0,endDay=0,endDayOfWeek=0,endTime=0,endTimeMode=0],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2022,MONTH=1,WEEK_OF_YEAR=8,WEEK_OF_MONTH=3,DAY_OF_MONTH=17,DAY_OF_YEAR=48,DAY_OF_WEEK=5,DAY_OF_WEEK_IN_MONTH=3,AM_PM=0,HOUR=2,HOUR_OF_DAY=2,MINUTE=33,SECOND=14,MILLISECOND=91,ZONE_OFFSET=0,DST_OFFSET=0]",
+        "id" : "-Mw4WhL1t5rWUAT1MvXg",
+        "id_carta" : "-Mw4SJ5pQJarUnEG53wB",
         "id_usuario" : "-MvZIKZi3plGEzI3dm7D"
       }
     },
     "reservas_eventos" : {
-      "-Mw49ghuNRMJ_yJHjbUW" : {
-        "id" : "-Mw49ghuNRMJ_yJHjbUW",
-        "id_evento" : "ejemploevento",
-        "id_usuario" : "-MvZIKZi3plGEzI3dm7D",
-        "nombreUser" : "admin"
-      },
-      "-Mw49h85a5em2LRXuuMm" : {
-        "id" : "-Mw49h85a5em2LRXuuMm",
-        "id_evento" : "ejemploEvento2",
-        "id_usuario" : "-MvZIKZi3plGEzI3dm7D",
-        "nombreUser" : "admin"
-      },
-      "-Mw4GlA8oAV-QKdm_qs2" : {
-        "id" : "-Mw4GlA8oAV-QKdm_qs2",
-        "id_evento" : "-MvyomHl_CneOFT8p4cf",
-        "id_usuario" : "-MvZIKZi3plGEzI3dm7D",
-        "nombreUser" : "admin"
-      },
-      "-Mw4I0lT-4AqDE60sGUV" : {
-        "id" : "-Mw4I0lT-4AqDE60sGUV",
-        "id_evento" : "ejemploEvento2",
+      "-Mw4Wi5DEaZH_ctzcN0h" : {
+        "id" : "-Mw4Wi5DEaZH_ctzcN0h",
+        "id_evento" : "-Mw4TxPHTdEi5nEgkIoP",
         "id_usuario" : "-MvZIKZi3plGEzI3dm7D",
         "nombreUser" : "admin"
       }
@@ -115,13 +94,13 @@
         "correo" : "prueba@prueba.prueba",
         "estado_noti" : 0,
         "id" : "-Mv5B3GkZX39Em9DvZyY",
-        "nombre" : "a",
+        "nombre" : "jesus",
         "tipo" : "1",
         "url_usuario" : "https://firebasestorage.googleapis.com/v0/b/magickfinal.appspot.com/o/tienda%2Fusuarios%2F-Mv5B3GkZX39Em9DvZyY?alt=media&token=4f60475d-a658-45c3-83cb-88c1ef3a2bc2",
         "user_notificador" : "6e80eef1a4516727"
       },
       "-MvZIKZi3plGEzI3dm7D" : {
-        "contraseña" : "123",
+        "contraseña" : "admin1",
         "correo" : "admin@admin.admin",
         "estado_noti" : 0,
         "id" : "-MvZIKZi3plGEzI3dm7D",
