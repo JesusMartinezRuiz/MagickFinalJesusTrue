@@ -22,6 +22,7 @@
     <string name="action_grafico">Gráfico</string>
     <string name="action_logOut">Log Out</string>
     <string name="modo">modo</string>
+
     <string name="menu_home">Cartas</string>
     <string name="menu_gallery">Eventos</string>
     <string name="menu_slideshow">Pedidos</string>

@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.magikfinaljesus.ui.home.HomeFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -31,17 +32,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var registrar: TextView
     lateinit var db_ref: DatabaseReference
     lateinit var sto_ref: StorageReference
-    private lateinit var androidId:String
-    private lateinit var generador: AtomicInteger
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        generador=AtomicInteger(0)
 
-        androidId= Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
         name=findViewById(R.id.main_et_nombre)
         pass=findViewById(R.id.main_et_contraseña)
@@ -55,17 +53,8 @@ class MainActivity : AppCompatActivity() {
         val app_id = getString(R.string.app_name)
         val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
+        
 
-        var modo=SP.getString(
-            getString(R.string.modo),
-            "falloShared"
-        ).toString()
-
-        if (modo=="night"){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
 
         login.setOnClickListener {
 
@@ -125,16 +114,12 @@ class MainActivity : AppCompatActivity() {
                         println(error.message)
                     }
                 })
-
         }
 
         registrar.setOnClickListener {
             val actividad = Intent(applicationContext,Registro::class.java)
             startActivity (actividad)
         }
-
-
-
     }
 
     override fun onBackPressed() {
@@ -142,6 +127,4 @@ class MainActivity : AppCompatActivity() {
         val actividad = Intent(applicationContext,MainActivity::class.java)
         startActivity (actividad)
     }
-
-
 }

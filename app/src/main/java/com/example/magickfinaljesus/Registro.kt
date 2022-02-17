@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -54,17 +56,7 @@ class Registro : AppCompatActivity() {
 
 
         registrarse.setOnClickListener {
-            if(pass.text.toString()==""||pass2.text.toString()==""||nombre.text.toString()==""||correo.text.toString()==""){
-                Toast.makeText(applicationContext,
-                    "Porfavor, rellene todos los campos",
-                    Toast.LENGTH_SHORT).show()
-            }else if(pass.text.toString()!=pass2.text.toString()){
-                Toast.makeText(applicationContext,
-                    "Las contraseñas deben coincidir",
-                    Toast.LENGTH_SHORT).show()
-
-            } else{
-
+            if(isValid()){
                 val identificador=db_ref.child("tienda")
                     .child("usuarios").push().key
 
@@ -82,42 +74,42 @@ class Registro : AppCompatActivity() {
 
 
 
-                            val androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+                        val androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
 
-                            val url_firebase = sto_ref.child("tienda")
+                        val url_firebase = sto_ref.child("tienda")
+                            .child("usuarios")
+                            .child(identificador!!)
+                            .putFile(url_usuario!!)
+                            .await().storage.downloadUrl.await()
+
+
+                        val nuevo_usuario = Usuario(
+                            identificador,
+                            nombre.text.toString().trim(),
+                            pass.text.toString().trim(),
+                            "1",
+                            correo.text.toString().trim(),
+                            url_firebase.toString(),
+                            Estado.CREADO,
+                            androidId
+
+                        )
+
+                        if (existe_usuario(nombre.text.toString().trim())) {
+                            tostadaCorrutina("El usuario introducido no está disponible")
+
+                        } else {
+                            db_ref.child("tienda")
                                 .child("usuarios")
                                 .child(identificador!!)
-                                .putFile(url_usuario!!)
-                                .await().storage.downloadUrl.await()
+                                .setValue(nuevo_usuario)
+
+                            tostadaCorrutina("Usuario Registrado")
 
 
-                            val nuevo_usuario = Usuario(
-                                identificador,
-                                nombre.text.toString().trim(),
-                                pass.text.toString().trim(),
-                                "1",
-                                correo.text.toString().trim(),
-                                url_firebase.toString(),
-                                Estado.CREADO,
-                                androidId
-
-                            )
-
-                            if (existe_usuario(nombre.text.toString().trim())) {
-                                tostadaCorrutina("El usuario introducido no está disponible")
-
-                            } else {
-                                db_ref.child("tienda")
-                                    .child("usuarios")
-                                    .child(identificador!!)
-                                    .setValue(nuevo_usuario)
-
-                                tostadaCorrutina("Usuario Registrado")
-
-
-                                val actividad = Intent(applicationContext, MainActivity::class.java)
-                                startActivity(actividad)
-                            }
+                            val actividad = Intent(applicationContext, MainActivity::class.java)
+                            startActivity(actividad)
+                        }
 
 
 
@@ -152,20 +144,19 @@ class Registro : AppCompatActivity() {
 
                 }
 
+            }else{
+
             }
         }
-
 
         val getCamera=registerForActivityResult(ActivityResultContracts.TakePicture()){
             if(it){
                 img.setImageURI(url_usuario)
 
             }else{
-                Toast.makeText(applicationContext, "No se ha hechado una foto", Toast.LENGTH_SHORT).show()
+
             }
         }
-
-
 
 
         img.setOnClickListener {
@@ -173,20 +164,13 @@ class Registro : AppCompatActivity() {
 
         }
 
-
-
         img.setOnLongClickListener{
             val ficheroFoto=crearFicheroImagen()
             url_usuario= FileProvider.getUriForFile(applicationContext,"com.example.magickfinaljesus.fileprovider",ficheroFoto)
             getCamera.launch(url_usuario)
             return@setOnLongClickListener true
         }
-
-
-
     }
-
-
 
     val obtener_url= registerForActivityResult(ActivityResultContracts.GetContent())
     {
@@ -243,6 +227,79 @@ class Registro : AppCompatActivity() {
 
         return ficheroImagen!!
     }
+
+    fun validUser(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.length<5){
+            e.error = "Debe ser mayor a 5 caracteres"
+            isValid = false
+        }
+        return isValid
+    }
+    fun validPass(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.length<5){
+            e.error = "Debe ser mayor a 5 caracteres"
+            isValid = false
+        }else if(!e.text.contains("[0-9]".toRegex())){
+            e.error = "Debe contener numeros"
+            isValid = false
+        }else if(e.text.length==0){
+            e.error = "Rellena la contraseña"
+            isValid = false
+        }
+        return isValid
+    }
+    fun validRepass(e: EditText):Boolean{
+        var isValid = true
+        if(e.text.toString() != pass.text.toString()){
+            e.error = "Las contraseñas deben coincidir"
+            isValid = false
+        }
+        return isValid
+    }
+
+    fun validEmail(e:EditText):Boolean{
+        var isValid = false
+        val text = e.text
+        if(
+            text.isNotEmpty()
+            && android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()
+        ){
+            isValid = true
+        }
+        else{
+            e.error = "El correo no es valido"
+        }
+        return isValid
+    }
+
+    fun isValid():Boolean{
+        var validated = true
+        val checkers = listOf(
+            Pair(nombre, this::validUser),
+            Pair(pass, this::validPass),
+            Pair(pass2, this::validRepass),
+            Pair(correo, this::validEmail)
+        )
+        for(c in checkers){
+            val x = c.first
+            val f = c.second
+            val y = f(x)
+            validated = y
+            if(!validated) break
+        }
+        return validated
+    }
+
+    fun sendForm(v: View){
+        if(isValid()){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
+        }
+    }
+
 
 
     suspend fun tostadaCorrutina(texto:String){

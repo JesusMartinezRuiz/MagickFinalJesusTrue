@@ -18,8 +18,6 @@ class AdaptadorEventosAdmin(val elementos: List<Eventos>, val contexto: EiActivi
     RecyclerView.Adapter<AdaptadorEventosAdmin.ViewHolder>(){
 
 
-
-
     class ViewHolder(val bind:RowEventosAdminBinding)
         : RecyclerView.ViewHolder(bind.root)
 
@@ -44,7 +42,7 @@ class AdaptadorEventosAdmin(val elementos: List<Eventos>, val contexto: EiActivi
 
             verMiembros.setOnClickListener {
                 val inte = Intent (contexto, VerMiembros::class.java)
-                inte.putExtra("Evento",elem)
+                inte.putExtra("evento",elem)
                 contexto.startActivity(inte)
             }
 

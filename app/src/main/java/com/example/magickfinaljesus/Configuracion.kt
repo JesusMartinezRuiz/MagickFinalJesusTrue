@@ -19,40 +19,37 @@ class Configuracion : AppCompatActivity() {
         setContentView(R.layout.activity_configuracion)
 
         cambiarTema=findViewById(R.id.swiTema)
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         val app_id = getString(R.string.app_name)
         val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
 
 
-        cambiarTema.setOnCheckedChangeListener { buttonView, isChecked ->
 
-        if(isChecked){
-            AppCompatDelegate.MODE_NIGHT_YES
+        cambiarTema.setOnCheckedChangeListener { _, b ->
+
+            val tema = if(b){
+                AppCompatDelegate.MODE_NIGHT_YES
+            }else{
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
 
             with(SP.edit()) {
-                putString(
+                putBoolean(
                     getString(R.string.modo),
-                    "night"
+                    b
                 )
             }
 
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
-        }else{
-            AppCompatDelegate.MODE_NIGHT_NO
-
-            with(SP.edit()) {
-                putString(
-                    getString(R.string.modo),
-                    "light"
-                )
-            }
-
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+            cambiarTema.isChecked=b
+            AppCompatDelegate.setDefaultNightMode(tema)
 
         }
+
 
     }
 

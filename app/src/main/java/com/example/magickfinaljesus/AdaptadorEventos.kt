@@ -15,7 +15,7 @@ import java.util.concurrent.CountDownLatch
 
 private lateinit var db_ref: DatabaseReference
 
-class AdaptadorEventos(val elementos: List<Eventos>, val con: UserMain, val idUsuario:String) :
+class AdaptadorEventos(val elementos: List<Eventos>, val con: UserMain, val idUsuario:String,val nombreDeUsuario:String) :
     RecyclerView.Adapter<AdaptadorEventos.ViewHolder>() {
 
 
@@ -41,44 +41,15 @@ class AdaptadorEventos(val elementos: List<Eventos>, val con: UserMain, val idUs
             rowFechaEvento.text= elem.fecha
             Glide.with(con).load(elem.img).into(rowIvEvento)
 
-
             rowApuntarseEvento.setOnClickListener {
-
                 val id_reservaEvento=db_ref.child("tienda").child("reservas_eventos").push().key!!
-                val nueva_reserva=ReservaEventos(id_reservaEvento,idUsuario,elem.id)
+                val nueva_reserva=ReservaEventos(id_reservaEvento,idUsuario,elem.id,nombreDeUsuario)
                 db_ref.child("tienda").child("reservas_eventos").child(id_reservaEvento).setValue(nueva_reserva)
                 db_ref.child("tienda").child("eventos").child(elem.id.toString()).child("aforo_ocupado").setValue(elem.aforo_ocupado!!.toInt()+1)
                 rowAforoOcupadoEvento.text= (elem.aforo_ocupado.toInt()+1).toString()
-                //desabilitar el imageview solo de este elemento
-
-//                db_ref.child("tienda").child("reservas_eventos").child(id_reservaEvento).child("id_evento")
-//                    .addValueEventListener(object: ValueEventListener {
-//                        override fun onDataChange(snapshot: DataSnapshot) {
-//                            var idevento = snapshot.getValue()
-//
-//                            db_ref.child("tienda").child("reservas_eventos").child(id_reservaEvento).child("id_usuario")
-//                                .addValueEventListener(object: ValueEventListener {
-//                                    override fun onDataChange(snapshot: DataSnapshot) {
-//                                        var idusuario = snapshot.getValue()
-//
-//                                        if (idevento==elem.id && idusuario==idUsuario){
-//                                            rowApuntarseEvento.visibility=View.INVISIBLE
-//                                        }
-//                                    }
-//                                    override fun onCancelled(error: DatabaseError) {
-//
-//                                    }
-//                                })
-//                        }
-//                        override fun onCancelled(error: DatabaseError) {
-//
-//                        }
-//                    })
-
+                rowApuntarseEvento.visibility=View.INVISIBLE
             }
-
         }
-
     }
 
     override fun getItemCount(): Int {

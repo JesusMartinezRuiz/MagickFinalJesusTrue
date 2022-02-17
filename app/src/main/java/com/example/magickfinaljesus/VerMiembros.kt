@@ -2,6 +2,8 @@ package com.example.magickfinaljesus
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -16,7 +18,10 @@ class VerMiembros : AppCompatActivity() {
     private lateinit var sto_ref: StorageReference
     lateinit var evento:Eventos
     lateinit var listaMiembros:ArrayList<ReservaEventos>
-    lateinit var listaMiembros2:ArrayList<Eventos>
+
+    lateinit var recycler:RecyclerView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +30,10 @@ class VerMiembros : AppCompatActivity() {
         db_ref= FirebaseDatabase.getInstance().getReference()
         sto_ref= FirebaseStorage.getInstance().getReference()
         listaMiembros=ArrayList()
-        listaMiembros2=ArrayList()
 
-        evento= intent.getSerializableExtra("evento")  as Eventos
+
+
+        evento=intent.getSerializableExtra("evento")  as Eventos
 
 
         db_ref.child("tienda")
@@ -45,7 +51,7 @@ class VerMiembros : AppCompatActivity() {
 
                             db_ref.child("tienda")
                                 .child("usuarios")
-                                .child(pojo_pedido!!.nombreUser!!)
+                                .child(pojo_pedido!!.id_usuario!!)
                                 .addListenerForSingleValueEvent(object : ValueEventListener {
                                     override fun onDataChange(snapshot: DataSnapshot) {
                                         val pojo_user = snapshot?.getValue(Usuario::class.java)
@@ -61,8 +67,6 @@ class VerMiembros : AppCompatActivity() {
                                     }
                                 })
 
-
-
                             semaforo.await();
 
                                 listaMiembros.add(pojo_pedido!!)
@@ -77,9 +81,10 @@ class VerMiembros : AppCompatActivity() {
                 }
             })
 
-
-
-
-
+        recycler=findViewById(R.id.rvVerMiembros)
+        recycler.adapter=AdaptadorVerMiembros(listaMiembros,EiActivity().contextoEiActivity)
+        recycler.layoutManager= LinearLayoutManager(applicationContext)
+        recycler.setHasFixedSize(true)
     }
+
 }

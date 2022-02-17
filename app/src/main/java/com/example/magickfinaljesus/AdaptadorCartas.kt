@@ -10,8 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.magickfinaljesus.databinding.RowCartaBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,6 +53,8 @@ class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:
                 val nueva_reserva=ReservaCarta(id_reservaCartas,idUsuario,elem.id,hoy.toString(),false)
                 db_ref.child("tienda").child("reservas_carta").child(id_reservaCartas).setValue(nueva_reserva)
                 Toast.makeText(con, "Se ha enviado una reserva", Toast.LENGTH_SHORT).show()
+
+
 
             }
 
@@ -106,4 +107,6 @@ class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:
             }
         }
     }
+
+
 }

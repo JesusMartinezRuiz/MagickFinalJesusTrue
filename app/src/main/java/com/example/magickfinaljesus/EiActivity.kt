@@ -26,6 +26,7 @@ class EiActivity : AppCompatActivity() {
     lateinit var listaAdmin:ArrayList<Cartas>
     lateinit var listaAdminEventos:ArrayList<Eventos>
     lateinit var listaPedidos:ArrayList<ReservaCarta>
+    lateinit var listaVerMiembros:ArrayList<ReservaEventos>
     private lateinit var db_ref: DatabaseReference
     private lateinit var sto_ref: StorageReference
 
@@ -53,6 +54,14 @@ class EiActivity : AppCompatActivity() {
         AdaptadorPedidos(listaPedidos,this)
     }
 
+    val listaMiembros by lazy{
+        listaVerMiembros
+    }
+
+    val adaptadorVerMiembros by lazy {
+        AdaptadorVerMiembros(listaMiembros,this)
+    }
+
     //el adaptador de pedidos aqui igual que este
 
 
@@ -66,8 +75,7 @@ class EiActivity : AppCompatActivity() {
         listaAdmin=ArrayList<Cartas>()
         listaAdminEventos=ArrayList()
         listaPedidos= ArrayList<ReservaCarta>()
-
-
+        listaVerMiembros=ArrayList()
 
         binding = ActivityEiBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -90,7 +98,22 @@ class EiActivity : AppCompatActivity() {
 
 
 
+        db_ref.child("tienda")
+            .child("reservas_eventos")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    listaVerMiembros.clear()
+                    snapshot.children.forEach { hijo->
+                        val pojo_verMiembros=hijo?.getValue(ReservaEventos::class.java)
+                        listaVerMiembros.add(pojo_verMiembros!!)
 
+                    }
+
+                }
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
 
         db_ref.child("tienda")
             .child("cartas")
