@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.MagickFinalJesus" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#D12601</item>
-        <item name="colorPrimaryVariant">#DB7100</item>
+        <item name="colorPrimary">@color/bombonaButano</item>
+        <item name="colorPrimaryVariant">@color/bombonaButanoVariant</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -26,8 +26,8 @@
     <!-- Base application theme. -->
     <style name="Theme.MagikFinalJesus" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#D12601</item>
-        <item name="colorPrimaryVariant">#DB7100</item>
+        <item name="colorPrimary">@color/bombonaButano</item>
+        <item name="colorPrimaryVariant">@color/bombonaButanoVariant</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

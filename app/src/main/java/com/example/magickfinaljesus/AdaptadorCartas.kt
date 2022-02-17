@@ -16,7 +16,7 @@ import java.util.*
 
 private lateinit var db_ref: DatabaseReference
 
-class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:List<Boolean>,val idUsuario:String) :
+class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:List<Boolean>,val idUsuario:String,val nombreUsuario:String) :
     RecyclerView.Adapter<AdaptadorCartas.ViewHolder>(), Filterable {
 
 
@@ -50,7 +50,7 @@ class AdaptadorCartas(val elementos: List<Cartas>, val con: UserMain,var colors:
 
             comprarRowCarta.setOnClickListener {
                 val id_reservaCartas=db_ref.child("tienda").child("reservas_carta").push().key!!
-                val nueva_reserva=ReservaCarta(id_reservaCartas,idUsuario,elem.id,hoy.toString(),false)
+                val nueva_reserva=ReservaCarta(id_reservaCartas,idUsuario,elem.id,hoy.toString(),false,nombreUsuario)
                 db_ref.child("tienda").child("reservas_carta").child(id_reservaCartas).setValue(nueva_reserva)
                 Toast.makeText(con, "Se ha enviado una reserva", Toast.LENGTH_SHORT).show()
 

@@ -33,7 +33,7 @@ class CartasHome : Fragment() {
     private lateinit var sto_ref: StorageReference
 
     val adaptadorCarta by lazy{
-        AdaptadorCartas(ma.listaCarta, ma.contextoUserMain , colorChecked, ma.idDeUsuario )
+        AdaptadorCartas(ma.listaCarta, ma.contextoUserMain , colorChecked, ma.idDeUsuario, ma.nombreDeUsuario)
     }
 
 

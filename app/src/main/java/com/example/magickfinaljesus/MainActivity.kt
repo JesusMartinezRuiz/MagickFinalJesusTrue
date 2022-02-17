@@ -50,10 +50,31 @@ class MainActivity : AppCompatActivity() {
         sto_ref= FirebaseStorage.getInstance().reference
 
 
+
+
         val app_id = getString(R.string.app_name)
         val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
-        
+
+
+        with(SP.edit()){
+            putString(
+                getString(R.string.id),
+                ""
+            )
+
+            putString(
+                getString(R.string.username),
+                ""
+            )
+
+            putString(
+                getString(R.string.type),
+                ""
+            )
+
+            commit()
+        }
 
         val tema = SP.getBoolean(getString(R.string.modo),false)
 
@@ -94,7 +115,6 @@ class MainActivity : AppCompatActivity() {
                                         getString(R.string.type),
                                         pojo_usuario.tipo
                                     )
-
 
                                     commit()
                                 }

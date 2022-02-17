@@ -79,7 +79,7 @@ class UserMain : AppCompatActivity() {
 
     val nombreDeUsuario by lazy{
         val app_id = getString(R.string.app_name)
-        val sp_name = "${app_id}_SP_Login"
+        val sp_name = "${app_id}_SP"
         var SP = getSharedPreferences(sp_name,0)
 
         SP.getString(
@@ -221,33 +221,6 @@ class UserMain : AppCompatActivity() {
                 }
             })
 
-        db_ref.child("tienda").child("reservas_cartas").addChildEventListener(object :
-            ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-
-                val pojo_usuario2=snapshot.getValue(Usuario::class.java)
-                if(!pojo_usuario2!!.user_notificador.equals(androidId) && pojo_usuario2.estado_noti==Estado.CREADO){
-                    generarNotificacion(generador.incrementAndGet(),pojo_usuario2,"El Usuario "+pojo_usuario2.nombre+" ha hecho un pedido","Pedido",HomeFragment::class.java)
-                    db_ref.child("tienda").child("usuarios").child(pojo_usuario2.id!!).child("estado_noti").setValue(Estado.NOTIFICADO)
-                }
-
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
 }
 
     override fun onBackPressed() {
